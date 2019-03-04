@@ -1,0 +1,31 @@
+# Getting historical stock price (2018) of Ferrari(RACE) in NYSE
+# Saving the historical price in "FerrariStockPrice.csv"
+# Reference Link: https://amigobulls.com/stocks/RACE/historical-stock-prices
+
+
+
+# Loading the stock price of 2018
+# The other datas except for "close price" had already been cut. 
+import pandas as pd
+from io import StringIO
+import urllib
+
+df = pd.read_csv('data/FerrariStockPrice2.csv',  skiprows=0)
+
+
+# Sort the dates into ascending order
+import pandas as pd
+from io import StringIO
+import urllib
+
+# 抽出したい部分を絞りこむ
+
+# indexを日付にした後、時系列にしてください
+df["Date"] = pd.to_datetime(df["Date"], format='%Y/%m/%d')
+df = df.set_index('Date')
+
+# カラムから'始値', '高値', '安値'を取り除いて、日付が古い順に並べてください。
+
+df = df.sort_index(ascending=True)
+df
+df.to_csv('data/df_FerrariStockPrice2.csv')
