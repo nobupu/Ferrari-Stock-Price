@@ -1,0 +1,23 @@
+# Plotting a graph of PN score of the twitter's comments in the account of "Scuderia Ferrari".
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import datetime
+import matplotlib.dates as dates
+import matplotlib.dates as mdates
+import matplotlib.ticker as ticker
+from datetime import datetime as dt
+import numpy as np
+
+# Extracting only the PN score in the csv file which contains twitter's comments & PN score
+Tweet = pd.read_csv('./data/sentiment.csv', skiprows=0, parse_dates=["text"])
+tweetData = Tweet['0.0']
+x = Tweet['text']
+
+plt.plot(x ,tweetData ,color='blue')
+plt.title("PN Score of Scuderia Ferrari Tweets")
+plt.xlabel("day")
+plt.ylabel("PN")
+plt.rcParams['figure.figsize'] = (5.0, 5.0)
