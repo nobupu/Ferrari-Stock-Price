@@ -20,7 +20,7 @@ if sys.version[0] == '2':
     sys.setdefaultencoding("utf-8")
     sntTweets = csv.writer(open("data/sentiment_f.csv", "w"))
 
-alltweets = csv.reader(open("data/tweets3.csv", 'r'))
+alltweets = csv.reader(open("data/tweets.csv", 'r'))
 
 
 for row in alltweets:
