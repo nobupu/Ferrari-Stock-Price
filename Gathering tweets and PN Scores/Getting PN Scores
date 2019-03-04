@@ -1,5 +1,6 @@
 # Analysing each comment's sentiment of twitter in the Scuderia Ferrari's account
 # Defining the each comments as Positive, Negative, Neutral 
+# Getting the Negative & Positvie score for the each comments
 # Reference Link:  http://learn.edina.ac.uk/twitter-sentiment/twitter/sentiment-analysis-with-textblob
 
 
