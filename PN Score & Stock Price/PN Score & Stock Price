@@ -1,0 +1,34 @@
+# フェラーリの株価とScuderia FerrariのPN値を一つのグラフに出力する
+# Plot the stock price and the PN score into one graph
+
+# The Stock Price of Ferrari
+Tweet = pd.read_csv('./data/df_FerrariStockPrice2.csv', skiprows=0, parse_dates=["Date"])
+y1 = Tweet['Close']
+x1 = Tweet['Date']
+
+# PN Scores of Scuderia Ferrari's tweets
+Tweet2 = pd.read_csv('./data/ferrari_result_pn.csv', skiprows=0, parse_dates=["Date"])
+y2 = Tweet2['average_PN']
+x2 = Tweet2['Date']
+
+# Line graph
+fig, ax1 = plt.subplots()
+ax1.plot(x1 ,y1 ,color='red', label='Stock Price')
+ax2 = ax1.twinx()  
+ax2.plot(x2 ,y2 ,color='blue', label='PN Score')
+
+# Graph legend
+ax1.legend(bbox_to_anchor=(0, 1), loc='upper left', borderaxespad=0.5, fontsize=10)
+ax2.legend(bbox_to_anchor=(0, 0.9), loc='upper left', borderaxespad=0.5, fontsize=10)
+ 
+# Title of the graph
+plt.title("Stock Price & PN Score")
+
+# Showing grid
+ax1.grid(True)
+ 
+# Showing the axis label
+plt.xlabel("day")
+ax1.set_ylabel('Stock Price')
+ax2.set_ylabel('PN Score')
+plt.show()
