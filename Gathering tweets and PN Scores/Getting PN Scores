@@ -3,11 +3,13 @@
 # Reference Link:  http://learn.edina.ac.uk/twitter-sentiment/twitter/sentiment-analysis-with-textblob
 
 
+
 import csv
 from textblob import TextBlob
 import sys
 
-# Do some version specific stuff
+# Analysing sentiment of the comments in "tweets.csv"  
+# Saving the comments with the sentiment analysis into the "sentiment.csv"
 if sys.version[0] == '3':
     from importlib import reload
     sntTweets = csv.writer(open("data/sentiment_f.csv", "w", newline=''))
