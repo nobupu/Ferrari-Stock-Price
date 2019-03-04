@@ -3,8 +3,6 @@
 # Reference Link: https://amigobulls.com/stocks/RACE/historical-stock-prices
 # Plot a graph about the stock price change
 
-
-
 # Loading the stock price of 2018
 # The other datas except for "close price" had already been cut. 
 
