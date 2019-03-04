@@ -1,0 +1,31 @@
+# Analysing each comment's sentiment of twitter in the Scuderia Ferrari's account
+# Defining the each comments as Positive, Negative, Neutral 
+# Reference Link:  http://learn.edina.ac.uk/twitter-sentiment/twitter/sentiment-analysis-with-textblob
+
+
+import csv
+from textblob import TextBlob
+import sys
+
+# Do some version specific stuff
+if sys.version[0] == '3':
+    from importlib import reload
+    sntTweets = csv.writer(open("data/sentiment_f.csv", "w", newline=''))
+
+if sys.version[0] == '2':
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
+    sntTweets = csv.writer(open("data/sentiment_f.csv", "w"))
+
+alltweets = csv.reader(open("data/tweets3.csv", 'r'))
+
+
+for row in alltweets:
+    blob = TextBlob(row[2])
+    print (blob.sentiment.polarity)
+    if blob.sentiment.polarity > 0:
+        sntTweets.writerow([row[0], row[1], row[2], row[3], blob.sentiment.polarity, "positive"])
+    elif blob.sentiment.polarity < 0:
+        sntTweets.writerow([row[0], row[1], row[2], row[3], blob.sentiment.polarity, "negative"])
+    elif blob.sentiment.polarity == 0.0:
+        sntTweets.writerow([row[0], row[1], row[2], row[3], blob.sentiment.polarity, "neutral"])
