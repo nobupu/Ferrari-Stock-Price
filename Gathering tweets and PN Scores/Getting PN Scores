@@ -13,12 +13,12 @@ import sys
 # Saving the comments with the sentiment analysis into the "sentiment.csv"
 if sys.version[0] == '3':
     from importlib import reload
-    sntTweets = csv.writer(open("data/sentiment_f.csv", "w", newline=''))
+    sntTweets = csv.writer(open("data/sentiment.csv", "w", newline=''))
 
 if sys.version[0] == '2':
     reload(sys)
     sys.setdefaultencoding("utf-8")
-    sntTweets = csv.writer(open("data/sentiment_f.csv", "w"))
+    sntTweets = csv.writer(open("data/sentiment.csv", "w"))
 
 alltweets = csv.reader(open("data/tweets.csv", 'r'))
 
