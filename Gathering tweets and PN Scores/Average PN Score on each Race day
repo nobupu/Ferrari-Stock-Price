@@ -1,0 +1,20 @@
+# Plotting a graph about the PN socres on the each race day in 2018
+# There are some scores PN scores in the same day.
+# It's necessary to compile them in an average score to combine them with the volume of the stock price data.
+
+
+
+# Loading all the twitter's PN scores in the account of "Scuderia Ferrari" on the each race day in 2018
+
+import pandas as pd
+
+Tweet = pd.read_csv('./data/sentiment_f.csv', parse_dates=True)
+df2 = Tweet.loc[:,['text', '0.0']]
+
+
+# indexを日付にした後、時系列にしてください
+df2["text"] = pd.to_datetime(df2["text"], format='%Y/%m/%d')
+
+df3 = df2.sort_index(ascending=True)
+df3
+df3.to_csv('data/df_senti_score.csv')
