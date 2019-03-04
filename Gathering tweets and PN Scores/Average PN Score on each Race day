@@ -35,8 +35,22 @@ df4
 
 # Saving the average PN score and the fixed date into "ferrari_result_pn.csv"
 # Changing the date if you want to get other average PN score on the other day.
+# Define the average PN scores as "average_PN" in "ferrari_result_pn.csv"
 
 with open('./data/ferrari_result_pn.csv','a', newline='', encoding='utf-8') as f:
     writer = csv.writer(f, lineterminator='\n')
     writer.writerow(["Date", "avaerage_PN"])
     writer.writerow(['2018-04-08', df4])
+    
+
+# Plot a graph for the PN score change of every race in 2018, excepting for March 
+
+Tweet = pd.read_csv('./data/ferrari_result_pn.csv', skiprows=0, parse_dates=["Date"])
+tweetDate = Tweet['average_PN']
+x = Tweet['Date']
+
+plt.plot(x ,tweetDate ,color='blue')
+plt.title("Scuderia Ferrari PN Score")
+plt.xlabel("day")
+plt.ylabel("PN Score")
+plt.rcParams['figure.figsize'] = (1.0, 1.0)
