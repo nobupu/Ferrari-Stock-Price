@@ -1,31 +1,39 @@
-# Getting historical stock price (2018) of Ferrari(RACE) in NYSE
+# Getting historical stock price (2018-2019) of Ferrari(RACE) in NYSE
 # Saving the historical price in "FerrariStockPrice.csv"
 # Reference Link: https://amigobulls.com/stocks/RACE/historical-stock-prices
+# Plot a graph about the stock price change
 
 
 
 # Loading the stock price of 2018
 # The other datas except for "close price" had already been cut. 
+
 import pandas as pd
 from io import StringIO
 import urllib
 
 df = pd.read_csv('data/FerrariStockPrice.csv',  skiprows=0)
 
+# Setting the index as date 
 
-
-import pandas as pd
-from io import StringIO
-import urllib
-
-
-
-# Settung the index as date 
 df["Date"] = pd.to_datetime(df["Date"], format='%Y/%m/%d')
 df = df.set_index('Date')
 
 # Sort the dates into ascending order
-# Saving the data into the df_FerrariStockPrice.csv
+# Saving the data into the "df_FerrariStockPrice.csv"
+
 df = df.sort_index(ascending=True)
 df
 df.to_csv('data/df_FerrariStockPrice.csv')
+
+# Plot a graph of historical stock price change of Ferrari(Race) from 01/02/2018 to 02/26/2019
+
+Tweet = pd.read_csv('./data/df_FerrariStockPrice2.csv', skiprows=0, parse_dates=["Date"])
+tweetDate = Tweet['Close']
+x = Tweet['Date']
+
+plt.plot(x ,tweetDate ,color='red')
+plt.title("Ferrari")
+plt.xlabel("day")
+plt.ylabel("Stock Price")
+plt.rcParams['figure.figsize'] = (10.0, 10.0)
