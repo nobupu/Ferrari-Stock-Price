@@ -10,22 +10,22 @@ import pandas as pd
 from io import StringIO
 import urllib
 
-df = pd.read_csv('data/FerrariStockPrice2.csv',  skiprows=0)
+df = pd.read_csv('data/FerrariStockPrice.csv',  skiprows=0)
 
 
-# Sort the dates into ascending order
+
 import pandas as pd
 from io import StringIO
 import urllib
 
-# 抽出したい部分を絞りこむ
 
-# indexを日付にした後、時系列にしてください
+
+# Settung the index as date 
 df["Date"] = pd.to_datetime(df["Date"], format='%Y/%m/%d')
 df = df.set_index('Date')
 
-# カラムから'始値', '高値', '安値'を取り除いて、日付が古い順に並べてください。
-
+# Sort the dates into ascending order
+# Saving the data into the df_FerrariStockPrice.csv
 df = df.sort_index(ascending=True)
 df
-df.to_csv('data/df_FerrariStockPrice2.csv')
+df.to_csv('data/df_FerrariStockPrice.csv')
