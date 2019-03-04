@@ -1,5 +1,6 @@
 # Getting Tweet through Twitter API
 # Choosing tweets of Scuderia Ferrari's account 
+# Saving the comments into the CSV file
 
 
 import tweepy
@@ -21,3 +22,12 @@ tweets = tweepy.Cursor(api.user_timeline,screen_name = "@ScuderiaFerrari",exclud
 for tweet in tweets.items():
     tweet_data.append([tweet.id,tweet.created_at,tweet.text.replace('\n',''),tweet.favorite_count,tweet.retweet_count])
 tweet_data
+
+
+
+# Saving the comments into the "tweets.csv"
+with open('data/tweets.csv', 'w', newline='', encoding='utf-8') as f:
+    writer = csv.writer(f, lineterminator='\n')
+    writer.writerow(["id", "text", "created_at", "fav", "RT"])
+    writer.writerows(tweet_data)
+pass
